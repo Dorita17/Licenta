@@ -1,0 +1,24 @@
+<ng-container *ngIf="user">
+    <div class="d-flex align-items-center justify-content-between d-track py-3 px-2 mb-0">
+        <span [class.negative]="negativeCalories">
+            <i class="fa fa-circle cal" aria-hidden="true"></i> 
+            Calories: {{user.dailyCalories > 0 ? user.dailyCalories : user.dailyCalories * (-1)}}g 
+            <i *ngIf="negativeCalories" class="fa fa-arrow-up" aria-hidden="true"></i>
+        </span>
+        <span [class.negative]="negativeProteins"> 
+            <i class="fa fa-circle pro" aria-hidden="true"></i> 
+            Proteins: {{user.dailyProteins > 0 ? user.dailyProteins : user.dailyProteins * (-1)}}g
+            <i *ngIf="negativeProteins" class="fa fa-arrow-up" aria-hidden="true"></i>
+        </span>
+        <span [class.negative]="negativeCarbohydrates"> 
+            <i class="fa fa-circle carbo" aria-hidden="true"></i> 
+            Carbohydrates: {{user.dailyCarbohydrates > 0 ? user.dailyCarbohydrates : user.dailyCarbohydrates * (-1)}}g
+            <i *ngIf="negativeCarbohydrates" class="fa fa-arrow-up" aria-hidden="true"></i>
+        </span>
+        <span [class.negative]="negativeFats"> 
+            <i class="fa fa-circle fats" aria-hidden="true"></i> 
+            Fats: {{user.dailyFats > 0 ? user.dailyFats : user.dailyFats * (-1)}}g
+            <i *ngIf="negativeFats" class="fa fa-arrow-up" aria-hidden="true"></i>
+        </span>
+    </div>
+</ng-container>

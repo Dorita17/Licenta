@@ -1,0 +1,44 @@
+<div class="container" style="margin-top: 100px;">
+    <div class="row" *ngIf="meal">
+        <div class="col-6">
+            <img src="{{meal.pictureUrl}}" alt="{{meal.name}}" class="img-fluid w-100">
+        </div>
+        <div class="col-6">
+            <h3 style="font-weight: bold;"><i *ngIf="meal.mealType == 'Vegetarian'" class="fa fa-envira veggie" aria-hidden="true"></i> {{meal.name}}</h3>
+            <p style="font-size: 1.3em;" class="mb-3">{{ meal.description }}</p>
+            <p style="font-size: 1.5em;">Serving: {{meal.grams}} g</p>
+            <p style="font-size: 1.5em; color: black;">{{meal.price }} RON</p>
+            <div class="d-flex justify-content-start align-items-center">
+                <i (click)="decrementQuantity()" class="fa fa-minus-circle text-warning mr-2" style="cursor: pointer; font-size: 2em;"></i>
+                <span class="font-weight-bold" style="font-size: 1.5em;">{{ quantity }}</span>
+                <i (click)="incrementQuantity()" class="fa fa-plus-circle text-warning mx-2" style="cursor: pointer; font-size: 2em;"></i>
+                <button (click)="addItemToBasket()" class="btn btn-outline-primary btn-lg ml-4">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5" *ngIf="meal">
+        <div class="col-12 ml-3">
+            <h4 class="nutritional mb-3">Nutritional Information</h4>
+            <div class="table-responsive">
+                <table class="table mb-5">
+                    <thead>
+                        <th>Energy(kcal)</th>
+                        <th>Proteins</th>
+                        <th>Carbohydrates</th>
+                        <th>Fats</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ meal.calories }}g</td>
+                            <td>{{ meal.proteins }}g</td>
+                            <td>{{ meal.carbohydrates }}g</td>
+                            <td>{{ meal.fats }}g</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

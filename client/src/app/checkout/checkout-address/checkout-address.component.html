@@ -1,0 +1,56 @@
+<div class="mt-4" [formGroup]="checkoutForm">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4>Delivery address</h4>
+        <button
+            (click)="saveUserAddress()" 
+            class="btn btn-outline-success mb-3" 
+            [disabled]="!checkoutForm.get('addressForm').valid || !checkoutForm.get('addressForm').dirty">
+            Save as default address
+        </button>
+    </div>
+    <div class="row" formGroupName="addressForm">
+        <div class="form-group col-6 mt-1">
+            <input type="text" formControlName="firstName" class="form-control" placeholder="First Name">
+            <p class="text-danger mb-1"
+            *ngIf="checkoutForm.get('addressForm.firstName').invalid && checkoutForm.get('addressForm.firstName').touched && checkoutForm.get('addressForm.firstName').errors['required']">
+            First Name is required.
+        </p>
+        </div>
+        <div class="form-group col-6 mt-1">
+            <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name">
+            <p class="text-danger mb-1"
+            *ngIf="checkoutForm.get('addressForm.lastName').invalid && checkoutForm.get('addressForm.lastName').touched && checkoutForm.get('addressForm.lastName').errors['required']">
+            Last Name is required.
+        </p>
+        </div>
+        <div class="form-group col-6 mt-1">
+            <input type="text" formControlName="city" class="form-control" placeholder="City">
+            <p class="text-danger mb-1"
+            *ngIf="checkoutForm.get('addressForm.city').invalid && checkoutForm.get('addressForm.city').touched && checkoutForm.get('addressForm.city').errors['required']">
+            City is required.
+        </p>
+        </div>
+        <div class="form-group col-6 mt-1">
+            <input type="text" formControlName="street" class="form-control" placeholder="Street">
+            <p class="text-danger mb-1"
+            *ngIf="checkoutForm.get('addressForm.street').invalid && checkoutForm.get('addressForm.street').touched && checkoutForm.get('addressForm.street').errors['required']">
+            Street is required.
+        </p>
+        </div>
+        <div class="form-group col-6 mt-1">
+            <input type="text" formControlName="zipCode" class="form-control" placeholder="Zip Code">
+            <p class="text-danger mb-1"
+            *ngIf="checkoutForm.get('addressForm.zipCode').invalid && checkoutForm.get('addressForm.zipCode').touched && checkoutForm.get('addressForm.zipCode').errors['required']">
+            Zipcode is required.
+        </p>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-between mb-4">
+    <button class="btn btn-outline-primary" routerLink="/basket">
+        <i class="fa fa-angle-left"></i> Back to Basket
+    </button>
+    <button [disabled]="checkoutForm.get('addressForm').invalid" class="btn btn-primary" cdkStepperNext>
+        Go to Delivery <i class="fa fa-angle-right"></i>
+    </button>
+</div>
